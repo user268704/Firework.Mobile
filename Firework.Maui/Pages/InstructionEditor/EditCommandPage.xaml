@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:components="clr-namespace:Firework.Maui.Pages.Components"
+             xmlns:settingsComponent1="clr-namespace:Firework.Maui.Pages.Components.SettingsComponent"
+             x:Class="Firework.Maui.Pages.InstructionEditor.EditCommandPage">
+    <ContentPage.Content>
+        <ScrollView Padding="10" VerticalScrollBarVisibility="Never"
+                    BackgroundColor="{AppThemeBinding Dark={StaticResource DarkBackgroundColor},
+        Light={StaticResource LightBackgroundColor}}">
+            <StackLayout>
+                <ActivityIndicator x:Name="Indicator" IsVisible="False" VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="Center" Style="{StaticResource ActivityIndicatorStyle}" />
+                <StackLayout x:Name="ContentContainer">
+                    <Label Text="Имя команды:" Style="{StaticResource MainTextStyle}" />
+                    <Frame x:Name="NameFrame" Style="{StaticResource FrameBoxStyle}">
+                        <components:CleanEntry x:Name="TitleCommandEntry" Style="{StaticResource EntryStyle}" />
+                    </Frame>
+                    <Label Text="Описание команды:" Style="{StaticResource MainTextStyle}" />
+                    <Frame Style="{StaticResource FrameBoxStyle}">
+                        <Editor x:Name="DescriptionCommandEntry" HeightRequest="200" IsTextPredictionEnabled="True"
+                                Style="{StaticResource EntryStyle}" />
+                    </Frame>
+                    <settingsComponent1:CustomSwitch Title="Добавить на главную" x:Name="AddToMainPageSwitch" />
+                    <StackLayout Margin="0, 10">
+                        <Label Text="Корневой модуль: " x:Name="RootLabel" FontSize="17"
+                               Style="{StaticResource MainTextStyle}" />
+                        <Label Text="Сервис: " x:Name="ServiceLabel" FontSize="17"
+                               Style="{StaticResource MainTextStyle}" />
+                        <StackLayout x:Name="ParamsStack" Orientation="Horizontal">
+                            <Label Text="Параметры: " FontSize="17" HorizontalOptions="Start"
+                                   Style="{StaticResource MainTextStyle}" />
+                            <Label x:Name="ParameterLabel" FontSize="17" Style="{StaticResource MainTextStyle}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnParams_Click" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <components:CleanEntry x:Name="ParamsChangedEntry" FontSize="17" IsVisible="False"
+                                                   Style="{StaticResource EntryStyle}" />
+                        </StackLayout>
+                    </StackLayout>
+                    <Button Style="{StaticResource MainButtonStyle}" Clicked="Save_Click"
+                            VerticalOptions="EndAndExpand" Text="Сохранить" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

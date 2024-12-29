@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:components="clr-namespace:Firework.Maui.Pages.Components"
+             x:Class="Firework.Maui.Pages.SimulatorPage">
+    <ContentPage.Content>
+        <Grid x:Name="StickContainer" HorizontalOptions="Center" VerticalOptions="Center">
+            <components:MenuComponent/>
+            <Ellipse x:Name="PanContainer" WidthRequest="200" HeightRequest="200"
+                     Stroke="{AppThemeBinding Dark={StaticResource DarkSecondColor}, Light={StaticResource LightSecondColor}}" />
+            <Ellipse x:Name="Stick" WidthRequest="45" HeightRequest="45" VerticalOptions="Center"
+                     HorizontalOptions="Center" Fill="Black">
+                <Ellipse.GestureRecognizers>
+                    <PanGestureRecognizer PanUpdated="PanUpdate" />
+                </Ellipse.GestureRecognizers>
+            </Ellipse>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

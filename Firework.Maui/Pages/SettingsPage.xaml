@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:settingsComponent="clr-namespace:Firework.Maui.Pages.Components.SettingsComponent"
+             xmlns:components="clr-namespace:Firework.Maui.Pages.Components"
+             x:Class="Firework.Maui.Pages.SettingsPage">
+    <ContentPage.Content>
+        <Grid
+            BackgroundColor="{AppThemeBinding Dark={StaticResource DarkBackgroundColor}, Light={StaticResource LightBackgroundColor}}">
+            <StackLayout Spacing="10" Margin="10">
+                <components:MenuComponent/>
+                <settingsComponent:Separator Title="Интерфейс" />
+                <settingsComponent:CustomSwitch Title="Тёмная тема" x:Name="Theme" ElementName="theme"
+                                                CheckChanged="SettingsChanged" />
+                <settingsComponent:Separator Title="Подключение" />
+                <settingsComponent:CustomSwitch Title="Автоподключение" x:Name="AutoConnect" ElementName="autoConnect"
+                                                CheckChanged="SettingsChanged" />
+                <settingsComponent:SettingsEntry Description="Точка подключения" IsReadOnly="True" x:Name="EndPoint" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Firework.Maui.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:Firework.Maui.Pages"
+    xmlns:instructionEditor="clr-namespace:Firework.Maui.Pages.InstructionEditor"
+    FlyoutBehavior="Disabled"
+    BackgroundColor="{AppThemeBinding Dark={StaticResource DarkBackgroundColor}, Light={StaticResource LightBackgroundColor}}">
+
+    <ShellContent Route="MainPage" ContentTemplate="{DataTemplate pages:MainPage}" />
+    <ShellContent Route="Settings" ContentTemplate="{DataTemplate pages:SettingsPage}" />
+    <ShellContent Route="Simulator" ContentTemplate="{DataTemplate pages:SimulatorPage}" />
+    <ShellContent Route="ReadyMacros" ContentTemplate="{DataTemplate pages:ReadyMacros}" />
+    <ShellContent Route="CommandEditor" ContentTemplate="{DataTemplate instructionEditor:CreateCommandPage}"/>
+    <ShellContent Route="ParametersEditor" ContentTemplate="{DataTemplate instructionEditor:ParametersEditPage}"/>
+</Shell>

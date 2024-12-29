@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:components="clr-namespace:Firework.Maui.Pages.Components"
+             x:Class="Firework.Maui.Pages.MainPage">
+    <ContentPage.Content>
+        <ScrollView x:Name="MainContainer" Opacity="100" IsVisible="True" Orientation="Vertical"
+                    BackgroundColor="{AppThemeBinding Dark={StaticResource DarkBackgroundColor}, Light={StaticResource LightBackgroundColor}}">
+            <StackLayout>
+                <StackLayout x:Name="UserNameContainer" Orientation="Horizontal" Margin="10">
+                    <components:MenuComponent/>
+                    <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+                        <Label FontSize="30">👉</Label>
+                        <Label x:Name="UserNameLabel" Style="{StaticResource MainTextStyle}" FontSize="25" />
+                        <Label FontSize="30">👈</Label>
+                    </StackLayout>
+                </StackLayout>
+                <Grid x:Name="ProgressContainer" Margin="10" HorizontalOptions="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="10">
+                        <StackLayout Orientation="Horizontal" Spacing="2">
+                            <Label Style="{StaticResource MainTextStyle}">CPU</Label>
+                            <Label x:Name="PercentageCpu" Style="{StaticResource MainTextStyle}" />
+                        </StackLayout>
+                        <ProgressBar x:Name="CpuProgress" HorizontalOptions="Center" WidthRequest="100"
+                                     Style="{StaticResource ProgressStyle}" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1" Orientation="Vertical" HorizontalOptions="Start" Margin="10">
+                        <StackLayout Orientation="Horizontal" Spacing="2">
+                            <Label Style="{StaticResource MainTextStyle}" HorizontalTextAlignment="Center">GPU</Label>
+                            <Label x:Name="PercentageGpu" Style="{StaticResource MainTextStyle}" />
+                        </StackLayout>
+
+                        <ProgressBar x:Name="GpuProgress" HorizontalOptions="Center" WidthRequest="100"
+                                     Style="{StaticResource ProgressStyle}" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="2" Orientation="Vertical" HorizontalOptions="Start" Margin="10">
+                        <StackLayout Orientation="Horizontal" Spacing="2">
+                            <Label Style="{StaticResource MainTextStyle}" HorizontalOptions="End">RAM</Label>
+                            <Label x:Name="PercentageRam" Style="{StaticResource MainTextStyle}" />
+                        </StackLayout>
+
+                        <ProgressBar x:Name="RamProgress" HorizontalOptions="Center" WidthRequest="100"
+                                     Style="{StaticResource ProgressStyle}" />
+                    </StackLayout>
+                </Grid>
+
+                <Grid x:Name="FastCommandContainer" 
+                      RowSpacing="5"
+                      ColumnSpacing="5"
+                      HorizontalOptions="Center" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Row="0" Grid.Column="0" x:Name="Hot1" Clicked="HotButtonHandler"
+                            Style="{StaticResource MainButtonStyle}" Text="Закрыть всё" />
+                    <Button Grid.Row="1" Grid.Column="0" x:Name="Hot2" Clicked="HotButtonHandler"
+                            Style="{StaticResource MainButtonStyle}" Text="Копировать в буфер" />
+
+                    <Button Grid.Row="0" Grid.Column="1" x:Name="Hot3" Clicked="HotButtonHandler"
+                            Style="{StaticResource MainButtonStyle}" Text="Отключить" />
+                    <Button Grid.Row="1" Grid.Column="1" x:Name="Hot4" Clicked="HotButtonHandler"
+                            Style="{StaticResource MainButtonStyle}" Text="Копировать из буфера" />
+                </Grid>
+                <StackLayout x:Name="HistoryUsingInstructions" Orientation="Vertical" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

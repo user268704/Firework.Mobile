@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Firework.Maui.Pages.LoadingPage">
+    <ContentPage.Content>
+        <ScrollView x:Name="MainContainer"
+                    BackgroundColor="{AppThemeBinding Dark={StaticResource DarkBackgroundColor}, Light={StaticResource LightBackgroundColor}}">
+            <StackLayout>
+                <Label x:Name="WaitLabel1" Rotation="90" VerticalOptions="FillAndExpand" FontSize="200" Text="Ж"
+                       Style="{StaticResource MainTextStyle}" HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center" />
+                <Label x:Name="WaitLabel2" VerticalOptions="FillAndExpand" FontSize="200" Text="Д"
+                       Style="{StaticResource MainTextStyle}" HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center" />
+                <Label x:Name="WaitLabel3" Rotation="90" VerticalOptions="FillAndExpand" FontSize="200" Text="И"
+                       Style="{StaticResource MainTextStyle}" HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:components="clr-namespace:Firework.Maui.Pages.Components"
+             x:Class="Firework.Maui.Pages.InstructionEditor.CreateCommandPage">
+    <ContentPage.Content>
+        <Grid Margin="10" RowSpacing="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <components:MenuComponent/>
+
+            <StackLayout Grid.Row="1">
+                <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource PaperBackgroundDarkColor}, Light={StaticResource PaperBackgroundLightColor}}">
+                    <Picker x:Name="ServicePick"
+                            TitleColor="{AppThemeBinding Dark={StaticResource DarkMainTextColor}, Light={StaticResource LightMainTextColor}}"
+                            SelectedItem="{Binding SelectedService}"
+                            ItemsSource="{x:Binding Services}"
+                            ItemDisplayBinding="{Binding Title}"
+                            SelectedIndexChanged="ServicePickChange"
+                            Title="Выбрать сервис"></Picker>
+                </Frame>
+                <Label x:Name="Arrow1" Opacity="0" IsVisible="False" HorizontalOptions="Center" FontSize="55"> ↓ </Label>
+            </StackLayout>
+
+            <StackLayout Grid.Row="2">
+                <Frame IsVisible="False" x:Name="ActionPickFrame" BackgroundColor="{AppThemeBinding Dark={StaticResource PaperBackgroundDarkColor}, Light={StaticResource PaperBackgroundLightColor}}">
+                    <Picker x:Name="ActionPick" ItemsSource="{x:Binding Actions}" SelectedItem="{Binding SelectedAction}" SelectedIndexChanged="ActionPickChanged" ItemDisplayBinding="{Binding Name}" Opacity="0" IsVisible="False" Title="Выбрать действие" ></Picker>
+                </Frame>
+
+                <Label x:Name="Arrow2" IsVisible="False" Opacity="0" HorizontalOptions="Center" FontSize="55"> ↓ </Label>
+            </StackLayout>
+
+            <Button Grid.Row="3" x:Name="SelectParametersButton" Text="Выбрать параметры" Opacity="0" IsVisible="False" Style="{StaticResource MainButtonStyle}"
+                    Command="{Binding SelectParameterCommand}" />
+
+            <ProgressBar Grid.Row="4" VerticalOptions="End" x:Name="Progress"/>
+            <Button Grid.Row="5" Text="Готово" Command="{Binding DoneCommand}"
+                    VerticalOptions="EndAndExpand"
+                    Style="{StaticResource MainButtonStyle}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

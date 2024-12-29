@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    
+    <!-- Мой код ниже -->
+    <Style x:Key="ActivityIndicatorStyle" TargetType="ActivityIndicator">
+        <Setter Property="Color" Value="{StaticResource ProgressBarColor}" />
+    </Style>
+    <Style x:Key="StackLayoutStyle" TargetType="StackLayout">
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Dark={StaticResource LightSecondColor}, Light={StaticResource DarkSecondColor}}" />
+        <Setter Property="Padding" Value="10" />
+    </Style>
+
+    <Style x:Key="StackLayoutSecondStyle" TargetType="StackLayout">
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Dark={StaticResource DarkBackgroundColor}, Light={StaticResource LightBackgroundColor}}" />
+        <Setter Property="Padding" Value="10" />
+    </Style>
+    
+    <Style x:Key="ProgressStyle" TargetType="ProgressBar">
+        <Setter Property="ProgressColor" Value="{StaticResource ProgressBarColor}" />
+    </Style>
+    
+    <Style x:Key="EntryStyle" TargetType="Entry">
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
+        <Setter Property="TextColor" 
+                Value="{AppThemeBinding Dark={StaticResource DarkMainTextColor}, Light={StaticResource LightMainTextColor}}" />
+    </Style>
+    
+    <Style x:Key="BaseTextStyle" TargetType="Label">
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Dark={StaticResource DarkMainTextColor}, Light={StaticResource LightMainTextColor}}" />
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
+        <Setter Property="FontSize" Value="17" />
+    </Style>
+
+    <Style x:Key="MainTextStyle" BasedOn="{StaticResource BaseTextStyle}" TargetType="Label">
+        <Setter Property="FontSize" Value="20" />
+    </Style>
+
+    <Style x:Key="SecondTextStyle" BasedOn="{StaticResource BaseTextStyle}" TargetType="Label">
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Gray400}}" />
+    </Style>
+
+    <Style x:Key="BaseButton" TargetType="Button">
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
+        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Dark={StaticResource DarkMainTextColor}, Light={StaticResource DarkMainTextColor}}" />
+    </Style>
+
+    <Style x:Key="RemoveItemButton" TargetType="ImageButton">
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="Source" Value="Svg/close_icon_light.svg"/>
+    </Style>
+
+    <Style x:Key="MainButtonStyle" BasedOn="{StaticResource BaseButton}" TargetType="Button">
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Dark={StaticResource ButtonBackgroundDarkColor}, Light={StaticResource ButtonBackgroundLightColor}}" />
+    </Style>
+
+
+    <Style x:Key="MenuItemStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Dark={StaticResource DarkMainTextColor}, Light={StaticResource LightMainTextColor}}" />
+        <Setter Property="Padding" Value="10" />
+    </Style>
+
+    <Style x:Key="FrameBoxStyle" TargetType="Frame">
+        <Setter Property="CornerRadius" Value="5" />
+        <Setter Property="Padding" Value="1" />
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Dark={StaticResource DarkSecondColor}, Light={StaticResource LightSecondColor}}" />
+    </Style>
+    
+    <Style x:Key="MainFrameContainerStyle" TargetType="Frame">
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Dark={StaticResource DarkBackgroundColor}, Light={StaticResource LightBackgroundColor}}" />
+    </Style>
+    
+</ResourceDictionary>

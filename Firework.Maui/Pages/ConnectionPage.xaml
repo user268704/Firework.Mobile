@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:components="clr-namespace:Firework.Maui.Pages.Components"
+             xmlns:viewModels="clr-namespace:Firework.Maui.ViewModels"
+             xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+             x:Class="Firework.Maui.Pages.ConnectionPage">
+    <ContentPage.Resources>
+        <Style TargetType="Entry">
+            <Setter Property="MaxLength" Value="3" />
+            <Setter Property="Keyboard" Value="Numeric" />
+            <Setter Property="WidthRequest" Value="40" />
+            <Setter Property="Margin" Value="5" />
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid x:Name="MainContentContainer"
+              Padding="10"
+              RowSpacing="5"
+              BackgroundColor="{AppThemeBinding Dark={StaticResource DarkBackgroundColor},
+               Light={StaticResource LightBackgroundColor}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0" x:Name="ContentStack">
+                <Label Style="{StaticResource MainTextStyle}">Если в истории нет нужного адреса, можно попробовать подключиться введя его тут</Label>
+                <StackLayout VerticalOptions="Start" Margin="0,50,0,0">
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" Spacing="10" HorizontalOptions="Center">
+                        <components:IpOctetEntry x:Name="FirstOctet"
+                                                 Text="{x:Binding Ip.First}"
+                                                 Placeholder="255"
+                                                 PlaceholderColor="{AppThemeBinding Dark={StaticResource PlaceholderTextDarkColor}, Light={StaticResource PlaceholderTextLightColor}}"
+                                                 Keyboard="Numeric"
+                                                 HorizontalTextAlignment="Center"
+                                                 MaxLength="3"
+                                                 Completed="CompletedHandler"
+                                                 TextChanged="Octets_OnTextChanged"
+                                                 WidthRequest="40"
+                                                 Style="{StaticResource EntryStyle}" />
+                        <Ellipse Fill="{AppThemeBinding Dark={StaticResource LightBackgroundColor}, Light={StaticResource DarkBackgroundColor}}" 
+                                 WidthRequest="10"
+                                 HeightRequest="10"/>
+                        <components:IpOctetEntry x:Name="SecondOctet" Text="{x:Binding Ip.Second}" PlaceholderColor="{AppThemeBinding Dark={StaticResource PlaceholderTextDarkColor}, Light={StaticResource PlaceholderTextLightColor}}"
+                                                 MaxLength="3"
+                                                 Placeholder="255"
+                                                 HorizontalTextAlignment="Center"
+                                                 Keyboard="Numeric"
+                                                 Completed="CompletedHandler"
+                                                 TextChanged="Octets_OnTextChanged"
+                                                 WidthRequest="40" Style="{StaticResource EntryStyle}" />
+                        <Ellipse Fill="{AppThemeBinding  Dark={StaticResource LightBackgroundColor}, Light={StaticResource DarkBackgroundColor}}" 
+                                 WidthRequest="10"
+                                 HeightRequest="10"/>
+                        <components:IpOctetEntry x:Name="ThirdOctet"
+                                                 PlaceholderColor="{AppThemeBinding Dark={StaticResource PlaceholderTextDarkColor}, Light={StaticResource PlaceholderTextLightColor}}"
+                                                 Text="{x:Binding Ip.Third}"
+                                                 Placeholder="255"
+                                                 MaxLength="3"
+                                                 HorizontalTextAlignment="Center"
+                                                 Keyboard="Numeric"
+                                                 Completed="CompletedHandler"
+                                                 TextChanged="Octets_OnTextChanged"
+                                                 WidthRequest="40" Style="{StaticResource EntryStyle}" />
+                        <Ellipse Fill="{AppThemeBinding Dark={StaticResource LightBackgroundColor}, Light={StaticResource DarkBackgroundColor}}" 
+                                 WidthRequest="10"
+                                 HeightRequest="10"/>
+                        <components:IpOctetEntry x:Name="FourthOctet"
+                                                 MaxLength="3"
+                                                 Text="{x:Binding Ip.Fourth}"
+                                                 Placeholder="255"
+                                                 HorizontalTextAlignment="Center"
+                                                 Keyboard="Numeric"
+                                                 PlaceholderColor="{AppThemeBinding Dark={StaticResource PlaceholderTextDarkColor}, Light={StaticResource PlaceholderTextLightColor}}"
+                                                 Completed="CompletedHandler"
+                                                 TextChanged="Octets_OnTextChanged"
+                                                 WidthRequest="40"
+                                                 Style="{StaticResource EntryStyle}" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+
+            <material:TabView Grid.Row="1" TabHeaderItemColumnWidth="190">
+                <material:TabItem Title="История">
+                    <material:TabItem.Content>
+                        <CollectionView
+                            SelectionChanged="SelectHistoryItem"
+                            x:Name="HistoryCollectionView"
+                            SelectionMode="Single"
+                            ItemsSource="{Binding HistoryItems}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame InputTransparent="True" Padding="5" Margin="5" CornerRadius="5" BackgroundColor="{AppThemeBinding Dark={StaticResource PaperBackgroundDarkColor}, Light={StaticResource PaperBackgroundLightColor}}">
+                                        <Grid Margin="5,0,5,0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding HostName}"
+                                                   FontSize="16"
+                                                   Style="{StaticResource MainTextStyle}"/>
+
+                                            <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+                                                <Label Text="{Binding EndPoint}"
+                                                       Style="{StaticResource SecondTextStyle}"/>
+                                            </StackLayout>
+                                            <StackLayout Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" VerticalOptions="Center">
+                                                <ImageButton Style="{StaticResource RemoveItemButton}"
+                                                             Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ConnectionPageViewModel}}, Path=RemoveHistoryItemCommand}" CommandParameter="{Binding Id}"/>
+                                            </StackLayout>
+                                        </Grid>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </material:TabItem.Content>
+                </material:TabItem>
+                <material:TabItem Title="QR">
+                    <Label>QR сканер later</Label>
+                </material:TabItem>
+            </material:TabView>
+            <Grid Grid.Row="2" VerticalOptions="End" ColumnSpacing="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="1" StyleClass="OutlinedButton" Command="{Binding DoneCommand}" Text="Готово"/>
+                <Button Grid.Column="0" StyleClass="OutlinedButton" Text="QR" Clicked="QRConnection_OnClicked"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

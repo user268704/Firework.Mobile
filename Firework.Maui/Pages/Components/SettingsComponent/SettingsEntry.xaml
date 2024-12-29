@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:components="clr-namespace:Firework.Maui.Pages.Components"
+             x:Class="Firework.Maui.Pages.Components.SettingsComponent.SettingsEntry">
+    <ContentPage.Content>
+        <Grid Margin="10,0,0,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" x:Name="DescriptionLabel" FontSize="17" VerticalTextAlignment="Center"
+                   Style="{StaticResource MainTextStyle}" />
+            <Frame Grid.Column="1" Style="{StaticResource FrameBoxStyle}">
+                <components:CleanEntry x:FieldModifier="public" x:Name="MainEntry" FontSize="17"
+                                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                       Style="{StaticResource EntryStyle}">
+                    <components:CleanEntry.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="TapGestureRecognizerEntry" />
+                    </components:CleanEntry.GestureRecognizers>
+                </components:CleanEntry>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentView>

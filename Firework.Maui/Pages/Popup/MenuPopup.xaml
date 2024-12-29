@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+                     xmlns:popup="clr-namespace:Firework.Maui.Pages.Popup"
+                     x:Class="Firework.Maui.Pages.Popup.MenuPopup">
+    <toolkit:Popup.Resources>
+        <Style TargetType="{x:Type popup:MenuPopup}">
+            <Setter Property="Color" Value="Transparent" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Start" />
+            <Setter Property="CanBeDismissedByTappingOutsideOfPopup" Value="True" />
+        </Style>
+    </toolkit:Popup.Resources>
+    <Frame HorizontalOptions="Center" VerticalOptions="Center" Margin="10" Style="{StaticResource MainFrameContainerStyle}">
+        <CollectionView x:Name="MenuCollection" SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="10" Margin="5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                        
+                            <Image Grid.Column="0" Source="{Binding Icon}" WidthRequest="30" HeightRequest="30" VerticalOptions="Center"/>
+                            <Label Text="{Binding Title}" TextColor="Black" Grid.Column="1" VerticalOptions="Center" FontSize="18"/>
+                        </Grid>
+                    
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ItemSelectedCommand, Source={RelativeSource AncestorType={x:Type popup:MenuPopup}}}"
+                                                  CommandParameter="{Binding .}"/>
+                        </Frame.GestureRecognizers>
+                   </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Frame>
+</toolkit:Popup>

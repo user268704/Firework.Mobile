@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Firework.Maui.Pages.Components.MenuComponent">
+    <StackLayout Padding="10" Spacing="4" HorizontalOptions="StartAndExpand">
+        <StackLayout.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OpenPopupMenu" />
+        </StackLayout.GestureRecognizers>
+        <BoxView WidthRequest="20" HeightRequest="2"
+                 BackgroundColor="{AppThemeBinding Dark={StaticResource LightBackgroundColor}, Light={StaticResource DarkBackgroundColor}}" />
+        <BoxView WidthRequest="20" HeightRequest="2"
+                 BackgroundColor="{AppThemeBinding Dark={StaticResource LightBackgroundColor}, Light={StaticResource DarkBackgroundColor}}" />
+        <BoxView WidthRequest="20" HeightRequest="2"
+                 BackgroundColor="{AppThemeBinding Dark={StaticResource LightBackgroundColor}, Light={StaticResource DarkBackgroundColor}}" />
+    </StackLayout>
+</ContentView>

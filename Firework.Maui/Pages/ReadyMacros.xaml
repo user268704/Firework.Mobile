@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:components="clr-namespace:Firework.Maui.Pages.Components"
+             xmlns:instructions="clr-namespace:Firework.Mobile.Models.Models.Instructions;assembly=Firework.Mobile.Models"
+             x:Class="Firework.Maui.Pages.ReadyMacros">
+    <ContentPage.Content>
+        <StackLayout Style="{StaticResource StackLayoutStyle}">
+            <components:MenuComponent/>
+            <Label x:Name="ErrorLabel" Style="{StaticResource MainTextStyle}" HorizontalOptions="Center"
+                   VerticalOptions="Center" VerticalTextAlignment="Center" />
+            <CollectionView x:Name="ListInstructions" SelectionChanged="OnItemSelected" HorizontalOptions="Center"
+                            SelectionMode="Single" ItemsSource="{Binding Instructions}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="instructions:InstructionInfo">
+                        <StackLayout Orientation="Horizontal">
+                            <!--
+                            <Label x:Name="TitleLabel" Style="{StaticResource MainTextStyle}" Text="{Binding  Title}" />
+                            <StackLayout Orientation="Vertical">
+                                <Label x:Name="Service" Style="{StaticResource MainTextStyle}"
+                                       TextColor="{AppThemeBinding Dark=#474747, Light=#888888}"
+                                       Text="{Binding Instruction.Service}" />
+                                <Label x:Name="Action" Style="{StaticResource MainTextStyle}"
+                                       TextColor="{AppThemeBinding Dark=#474747, Light=#888888}"
+                                       Text="{Binding Instruction.Action}" />
+                            </StackLayout>
+                        -->
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
